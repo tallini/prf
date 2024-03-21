@@ -26,21 +26,39 @@ export const configureRoutes = (
     });
 
     router.post('/login', (req: Request, res: Response, next: NextFunction) => {
-        passport.authenticate('local', (error: string | null, user: User) => {
-            if (error) {
-                res.status(500).send(error);
-            } else {
-                req.login(user, (err: string | null) => {
-                    if (err) {
-                        console.log(err);
-
-                        res.status(500).send('Internal server error');
+        passport.authenticate(
+            'local',
+            (error: string | null, user: typeof User) => {
+                if (error) {
+                    res.status(500).send(error);
+                } else {
+                    if (!user) {
+                        res.status(400).send('User not found!');
                     } else {
-                        res.status(200).send(user);
+                        req.login(user, (err: string | null) => {
+                            if (err) {
+                                console.log(err);
+                                res.status(500).send('Internal server error');
+                            } else {
+                                res.status(200).send(user);
+                            }
+                        });
                     }
-                });
+                }
             }
-        })(req, res, next);
+        )(req, res, next);
+    });
+
+    router.post('/register', async (req: Request, res: Response) => {
+        const username = req.body.username;
+        const password = req.body.password;
+        const user = new User({ username: username, password: password });
+        try {
+            const data = await user.save();
+            res.status(200).send(data);
+        } catch (error) {
+            res.status(500).send(error);
+        }
     });
 
     return router;

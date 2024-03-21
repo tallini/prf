@@ -6,8 +6,23 @@ import { configurePassport } from './passport/passport';
 import expressSession from 'express-session';
 import cookieParser from 'cookie-parser';
 
-const app = express();
+import mongoose from 'mongoose';
+
 const port = 5000;
+const app = express();
+const dbUrl = 'mongodb://localhost:6000/my_db';
+
+// connection to database
+
+mongoose
+    .connect(dbUrl)
+    .then(() => {
+        console.log('Sikeresen kapcsolódtunk!!!');
+    })
+    .catch((error) => {
+        console.log(error);
+        return;
+    });
 
 // bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
