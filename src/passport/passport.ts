@@ -1,6 +1,6 @@
 import { PassportStatic } from 'passport';
 import { Strategy } from 'passport-local';
-import { User } from '../model/user';
+import { User } from '../model/User';
 
 export const configurePassport = (passport: PassportStatic): PassportStatic => {
     passport.serializeUser((user: Express.User, done) => {
@@ -16,12 +16,6 @@ export const configurePassport = (passport: PassportStatic): PassportStatic => {
     passport.use(
         'local',
         new Strategy((username, password, done) => {
-            // if (username === 'test@test.com' && password === 'pass') {
-            //     done(null, new User(username, password));
-            // } else {
-            //     done('Incorrect username or password.');
-            // }
-
             const query = User.findOne({ username: username });
             query
                 .then((user) => {

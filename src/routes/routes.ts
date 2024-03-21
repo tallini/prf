@@ -1,30 +1,12 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import MainClass from '../main_class';
 import passport, { PassportStatic } from 'passport';
-import { User } from '../model/user';
+import { User } from '../model/User';
 
 export const configureRoutes = (
     passport: PassportStatic,
     router: Router
 ): Router => {
-    router.get('/', (req: Request, res: Response) => {
-        let myClass = new MainClass();
-        res.status(200).send('Hello world');
-    });
-
-    router.get('/promise', async (req: Request, res: Response) => {
-        let myClass = new MainClass();
-
-        try {
-            const data = await myClass.monitoringPromise();
-            res.write(data);
-            res.status(200).end();
-        } catch (error) {
-            res.write(error);
-            res.status(400).end();
-        }
-    });
-
     router.post('/login', (req: Request, res: Response, next: NextFunction) => {
         passport.authenticate(
             'local',
@@ -47,6 +29,20 @@ export const configureRoutes = (
                 }
             }
         )(req, res, next);
+    });
+
+    router.post('/logout', (req: Request, res: Response) => {
+        if (req.isAuthenticated()) {
+            req.logout((error) => {
+                if (error) {
+                    console.log(error);
+                    res.status(500).send('Internal server error.');
+                }
+                res.status(200).send('Successfully logged out.');
+            });
+        } else {
+            res.status(500).send('User is not logged in.');
+        }
     });
 
     router.post('/register', async (req: Request, res: Response) => {
