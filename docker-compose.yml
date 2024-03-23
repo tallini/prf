@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        ports:
+            - '6000:27017'
+        volumes:
+            - 'db_data:/data/db'
+            - 'db_config:/data/configdb'
+volumes:
+    db_data:
+        driver: local
+    db_config:
+        driver: local

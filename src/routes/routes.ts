@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import MainClass from '../main_class';
 import passport, { PassportStatic } from 'passport';
 import { User } from '../model/User';
 

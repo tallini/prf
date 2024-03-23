@@ -17,7 +17,7 @@ const dbUrl = 'mongodb://localhost:6000/my_db';
 mongoose
     .connect(dbUrl)
     .then(() => {
-        console.log('Sikeresen kapcsolódtunk!!!');
+        console.log('Successfully connected to the database');
     })
     .catch((error) => {
         console.log(error);
