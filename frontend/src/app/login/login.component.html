@@ -1,0 +1,25 @@
+<div class="login-container">
+    <img class="coffee" src="./../../assets/kave.png" />
+    <div class="book">
+        <div class="cover">
+            <div class="title">
+                Álmos könyvklub
+            </div>
+            <div class="description">
+                "Csak még egy <br>fejezetet..."
+            </div>
+        </div>
+        <div class="welcome">
+            <h1>Kedves Olvasó!</h1>
+            Kérlek jelentkezz be a további ügye-bajos dolgaidért!<br>
+            Alig várom, hogy veled együtt olvasgassak!
+
+        </div>
+        <form class="login-form">
+            <input [(ngModel)]="email" name="email" type="email" placeholder="Email" required />
+            <input [(ngModel)]="password" name="password" type="password" placeholder="Jelszó" required />
+            <button type="submit">Bejelentkezés</button>
+            <button type="button">Regisztráció</button>
+        </form>
+    </div>
+</div>
