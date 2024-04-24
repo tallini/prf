@@ -15,14 +15,14 @@ const dbUrl = 'mongodb://localhost:6000/my_db';
 // connection to database
 
 mongoose
-    .connect(dbUrl)
-    .then(() => {
-        console.log('Successfully connected to the database');
-    })
-    .catch((error) => {
-        console.log(error);
-        return;
-    });
+  .connect(dbUrl)
+  .then(() => {
+    console.log('Successfully connected to the database');
+  })
+  .catch((error) => {
+    console.log(error);
+    return;
+  });
 
 // bodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,9 +32,9 @@ app.use(cookieParser());
 
 // session
 const sessionOptions: expressSession.SessionOptions = {
-    secret: 'testsecret',
-    resave: false,
-    saveUninitialized: false,
+  secret: 'testsecret',
+  resave: false,
+  saveUninitialized: false,
 };
 app.use(expressSession(sessionOptions));
 
@@ -47,5 +47,5 @@ configurePassport(passport);
 app.use('/app', configureRoutes(passport, express.Router()));
 
 app.listen(port, () => {
-    console.log('Server is listening on port: ' + port.toString());
+  console.log('Server is listening on port: ' + port.toString());
 });
