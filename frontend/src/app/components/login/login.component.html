@@ -1,5 +1,5 @@
 <div class="login-container">
-    <img class="coffee" src="./../../assets/kave.png" />
+    <img class="coffee" src="../../../assets/kave.png" />
     <div class="book">
         <div class="cover">
             <div class="title">
@@ -16,10 +16,10 @@
 
         </div>
         <form class="login-form" (ngSubmit)="login()">
-            <input [(ngModel)]="userName" name="userName" type="text" placeholder="Felhasználónév" required />
+            <input [(ngModel)]="username" name="username" type="text" placeholder="Felhasználónév" required />
             <input [(ngModel)]="password" name="password" type="password" placeholder="Jelszó" required />
             <button type="submit">Bejelentkezés</button>
-            <button type="button">Regisztráció</button>
+            <button type="button" (click)="navigate('/signup')">Regisztráció</button>
         </form>
     </div>
 </div>

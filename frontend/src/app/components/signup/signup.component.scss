@@ -1,137 +1,64 @@
-$font-color: #4a3b27;
-$book-color-1: #56765f;
-
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  gap: 10px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.login-form .buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.login-form button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: cornflowerblue;
   width: 100%;
-  height: 100%;
-  background-image: url("./../../../assets/wooden-background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: white;
+  padding: 10px;
+}
 
-  .coffee {
-    position: absolute;
-    top: 5vh;
-    right: 2vh;
-    height: 50vh;
-    transform: rotate(30deg);
-  }
+.login-form button:hover {
+  background-color: rgb(50, 74, 120);
+}
 
-  .book {
-    position: relative;
-    width: 60vh;
-    height: 80vh;
-    box-shadow: 10px 0 20px rgba($color: #000000, $alpha: 0.4),
-      inset 60vh 0 50px rgba($color: #000000, $alpha: 0.4);
-    transform: perspective(2000px) rotateZ(-10deg);
-    transform-style: preserve-3d;
-    transition: all 1s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #eee7d7;
-    border-top-right-radius: 2vh;
-    border-bottom-right-radius: 2vh;
+.login-form button[type="button"] {
+  background-color: rgb(101, 231, 101);
+}
 
-    .welcome {
-      text-align: center;
-      margin-bottom: 5vh;
-      color: $font-color;
-    }
+.login-form button[type="button"]:hover {
+  background-color: rgb(57, 129, 57);
+}
 
-    .login-form {
-      display: flex;
-      flex-direction: column;
-      width: 50%;
-      border-radius: 5px;
-
-      & > * {
-        margin-top: 1vh;
-        margin-bottom: 1vh;
-      }
-
-      input {
-        padding: 5px;
-        background: none;
-        border: none;
-        text-align: center;
-        border-bottom: 1px solid $font-color;
-        color: $font-color;
-        font-size: 2vh;
-
-        &:focus {
-          outline: none;
-        }
-        &::placeholder {
-          color: $font-color;
-        }
-      }
-
-      button {
-        background: none;
-        border: none;
-        color: $font-color;
-        height: 3vh;
-        font-size: 2vh;
-        transition: all 0.2s ease;
-
-        &:hover {
-          cursor: pointer;
-          font-size: 2.3vh;
-        }
-        &:first-of-type {
-          margin-top: 5vh;
-        }
-      }
-    }
-
-    .cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $book-color-1;
-      transform-origin: left;
-      transform-style: preserve-3d;
-      transition: all 1s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #dc9e50;
-      border-top-right-radius: 2vh;
-      border-bottom-right-radius: 2vh;
-
-      .title {
-        font-size: 10vh;
-        font-style: italic;
-        font-family: "Times New Roman", Times, serif;
-        text-align: center;
-        backface-visibility: hidden;
-      }
-      .description {
-        margin-top: 4vh;
-        font-size: 4vh;
-        font-style: italic;
-        font-family: "Times New Roman", Times, serif;
-        text-align: center;
-        backface-visibility: hidden;
-      }
-    }
-
-    &:hover .cover {
-      transform: rotateY(-135deg);
-      box-shadow: 10px 0 20px rgba($color: #000000, $alpha: 0.4);
-    }
-    &:hover {
-      transform: perspective(2000px) rotateZ(0);
-      box-shadow: 10px 0 20px rgba($color: #000000, $alpha: 0.4),
-        inset 10vh 0 50px rgba($color: #000000, $alpha: 0.4);
-    }
-  }
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cccccc77;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }

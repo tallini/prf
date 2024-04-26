@@ -5,7 +5,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 const SALT_FACTOR = 10;
 
 interface IUser extends Document {
-  userName: string;
+  username: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -17,7 +17,7 @@ interface IUser extends Document {
 }
 
 const UserSchema: Schema<IUser> = new mongoose.Schema({
-  userName: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },

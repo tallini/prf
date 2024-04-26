@@ -16,7 +16,7 @@ import { AuthService } from '../../shared/services/auth.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  userName: string = '';
+  username: string = '';
   password: string = '';
   errorMessage: string = '';
   isLoading = false;
@@ -26,9 +26,9 @@ export class LoginComponent {
   login() {
     this.isLoading = true;
     setTimeout(() => {
-      if (this.userName && this.password) {
+      if (this.username && this.password) {
         this.errorMessage = '';
-        this.authService.login(this.userName, this.password).subscribe({
+        this.authService.login(this.username, this.password).subscribe({
           next: (data) => {
             if (data) {
               // navigation

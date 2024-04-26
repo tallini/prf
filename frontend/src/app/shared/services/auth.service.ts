@@ -9,10 +9,10 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   // login
-  login(userName: string, password: string) {
+  login(username: string, password: string) {
     // HTTP POST request
     const body = new URLSearchParams();
-    body.set('username', userName);
+    body.set('username', username);
     body.set('password', password);
 
     const headers = new HttpHeaders({
@@ -29,7 +29,7 @@ export class AuthService {
     // HTTP POST request
     const body = new URLSearchParams();
     body.set('email', user.email);
-    body.set('userName', user.userName);
+    body.set('username', user.username);
     body.set('firstName', user.firstName);
     body.set('lastName', user.lastName);
     body.set('password', user.password);
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   checkAuth() {
-    return this.http.get<boolean>('http://localhost:5000/app/checkAuth', {
+    return this.http.get<boolean>('http://localhost:5000/app/check-auth', {
       withCredentials: true,
     });
   }

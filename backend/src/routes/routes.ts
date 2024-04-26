@@ -45,14 +45,14 @@ export const configureRoutes = (
   });
 
   router.post('/register', async (req: Request, res: Response) => {
-    const userName = req.body.userName;
+    const username = req.body.username;
     const lastName = req.body.lastName;
     const firstName = req.body.firstName;
     const email = req.body.email;
     const password = req.body.password;
 
     const user = new User({
-      userName: userName,
+      username: username,
       lastName: lastName,
       firstName: firstName,
       email: email,
@@ -82,7 +82,7 @@ export const configureRoutes = (
     }
   });
 
-  router.get('/checkAuth', (req: Request, res: Response) => {
+  router.get('/check-auth', (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
       res.status(200).send(true);
     } else {
@@ -90,7 +90,7 @@ export const configureRoutes = (
     }
   });
 
-  router.delete('/deleteUser', (req: Request, res: Response) => {
+  router.delete('/delete-user', (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
       const id = req.query.id;
       const query = User.deleteOne({ _id: id });
