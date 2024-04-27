@@ -25,5 +25,13 @@ export const routes: Routes = [
       ),
     canActivate: [authGuard],
   },
+  {
+    path: 'home',
+    loadComponent: () =>
+      import('./components/home-page/home-page.component').then(
+        (c) => c.HomePageComponent
+      ),
+    canActivate: [authGuard],
+  },
   { path: '**', redirectTo: 'login' },
 ];

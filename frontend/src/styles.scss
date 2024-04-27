@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./variables";
+
 body {
   height: 100vh;
   display: flex;
@@ -8,6 +11,8 @@ body {
 
 app-root {
   width: 100%;
+  height: 100%;
+  background-color: $primary-warm-color;
 }
 html,
 body {

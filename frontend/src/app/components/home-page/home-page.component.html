@@ -1,0 +1,14 @@
+<app-page-template [title]="'Kezdőlap'" [addNewButton]="true" [addNewFunction]="addNewClub">
+  <div class="home-page-container">
+    <mat-tab-group [color]="'accent'">
+      <mat-tab label="Klubjaim" class="valami">
+        <div class="club-card-container">
+          <app-club-card *ngFor="let card of cards" [cardContent]="card" class="club-card" />
+        </div>
+      </mat-tab>
+      <mat-tab label="Felfedezés" class="valami">
+        <div class="club-card-container"></div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</app-page-template>

@@ -1,0 +1,33 @@
+@import "../../../../variables";
+
+.page-container {
+  height: 100%;
+  background-color: $default-dark;
+}
+
+@media (min-width: $breakpoint-sm) {
+  .page-container {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .page-container {
+    margin-left: 8rem;
+    margin-right: 8rem;
+  }
+}
+@media (min-width: $breakpoint-lg) {
+  .page-container {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+}
+
+@media (min-width: $breakpoint-xxl) {
+  .page-container {
+    margin-left: 12rem;
+    margin-right: 12rem;
+  }
+}

@@ -1,0 +1,13 @@
+<button mat-fab [matMenuTriggerFor]="aboveMenu" class="menu-button">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  <button mat-menu-item>
+    <mat-icon>person</mat-icon>
+    <span>Fiók</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>home</mat-icon>
+    <span>Főoldal</span>
+  </button>
+</mat-menu>

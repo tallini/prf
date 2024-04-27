@@ -5,19 +5,25 @@ $book-color-1: #56765f;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   background-image: url("../../../assets/wooden-background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 
   .coffee {
     position: absolute;
     top: 5vh;
     right: 2vh;
     height: 50vh;
-    transform: rotate(30deg);
+    // transform: rotate(30deg);
   }
 
   .book {
@@ -106,6 +112,7 @@ $book-color-1: #56765f;
       color: #dc9e50;
       border-top-right-radius: 2vh;
       border-bottom-right-radius: 2vh;
+      cursor: pointer;
 
       .title {
         font-size: 10vh;
@@ -126,11 +133,11 @@ $book-color-1: #56765f;
       }
     }
 
-    &:hover .cover {
+    &.open .cover {
       transform: rotateY(-135deg);
       box-shadow: 10px 0 20px rgba($color: #000000, $alpha: 0.4);
     }
-    &:hover {
+    &.open {
       transform: perspective(2000px) rotateZ(0);
       box-shadow: 10px 0 20px rgba($color: #000000, $alpha: 0.4),
         inset 10vh 0 50px rgba($color: #000000, $alpha: 0.4);

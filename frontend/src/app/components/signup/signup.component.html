@@ -1,39 +1,41 @@
 <div class="login-container">
   <form class="login-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <input formControlName="email" type="email" placeholder="Email" required
-      [ngClass]="{'invalid-input': signupForm.get('email')?.errors}" />
-    <div
-      *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
-      <p *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.errors!['required']">Email is required.</p>
-      <p *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.errors!['email']">Please enter a valid
-        email.</p>
-    </div>
-    <input formControlName="username" type="text" placeholder="Felhasználónév" />
-    <input formControlName="firstName" type="text" placeholder="Keresztnév" />
-    <input formControlName="lastName" type="text" placeholder="Vezetéknév" />
-    <input formControlName="password" type="password" placeholder="Password" required
-      [ngClass]="{'invalid-input': signupForm.get('password')?.errors}" />
-    <div
-      *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
-      <p *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.errors!['required']">Password is
-        required.</p>
-      <p *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.errors!['minlength']">Password must be
-        at least 6 characters.</p>
-    </div>
-    <input formControlName="confirmPassword" type="password" placeholder="Confirm password" required
-      [ngClass]="{'invalid-input': signupForm.get('confirmPassword')?.errors}" />
-    <div
-      *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched)">
-      <p *ngIf="signupForm.get('confirmPassword')?.errors && signupForm.get('confirmPassword')?.errors!['required']">
-        Confirming password is required.</p>
-      <p *ngIf="signupForm.get('confirmPassword')?.errors && signupForm.get('confirmPassword')?.errors!['mustMatch']">
-        Passwords must match.</p>
-    </div>
+    <mat-form-field>
+      <mat-label>Email cím</mat-label>
+      <input matInput placeholder="pelda@konyv.hu" [formControl]="$any(signupForm).get('email')" required>
+      @if (signupForm.get('email')?.errors && signupForm.get('email')?.errors!['email']) {
+      <mat-error>Helytelen email!</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Felhasználónév</mat-label>
+      <input matInput placeholder="kovacs.anna" [formControl]="$any(signupForm).get('username')" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Keresztnév</mat-label>
+      <input matInput placeholder="Anna" [formControl]="$any(signupForm).get('firstName')" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Vezetéknév</mat-label>
+      <input matInput placeholder="Kovács" [formControl]="$any(signupForm).get('lastName')" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Jelszó</mat-label>
+      <input matInput [type]="'password'" [formControl]="$any(signupForm).get('password')" required>
+      @if (signupForm.get('password')?.errors && signupForm.get('password')?.errors!['minlength']) {
+      <mat-error>Minimum 6 karakter hosszú jelszó kell!</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Jelszó megerősítése</mat-label>
+      <input matInput [type]="'password'" [formControl]="$any(signupForm).get('confirmPassword')" required>
+      @if (signupForm.get('confirmPassword')?.errors && signupForm.get('confirmPassword')?.errors!['mustMatch']) {
+      <mat-error>A jelszavak nem egyeznek!</mat-error>
+      }
+    </mat-form-field>
     <div class="buttons">
-      <button type="submit">Sign Up</button>
-    </div>
-    <div class="buttons">
-      <button type="reset" (click)="goBack()">Back</button>
+      <button mat-flat-button color="primary" type="submit">Regisztráció</button>
+      <button mat-flat-button type="reset" (click)="goBack()">Vissza</button>
     </div>
   </form>
 </div>

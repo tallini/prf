@@ -1,7 +1,7 @@
 <div class="login-container">
     <img class="coffee" src="../../../assets/kave.png" />
-    <div class="book">
-        <div class="cover">
+    <div class="book" [ngClass]="{'open':  isOpen}">
+        <div class="cover" (click)="isOpen = !isOpen">
             <div class="title">
                 Álmos könyvklub
             </div>

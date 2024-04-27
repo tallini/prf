@@ -3,17 +3,28 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 // FormsModule, ReactiveFormsModule
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+  ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
@@ -58,6 +69,18 @@ export class SignupComponent implements OnInit {
       }
     };
   }
+
+  // errorMessage = '';
+
+  // updateErrorMessage() {
+  //   if (this.email.hasError('required')) {
+  //     this.errorMessage = 'You must enter a value';
+  //   } else if (this.email.hasError('email')) {
+  //     this.errorMessage = 'Not a valid email';
+  //   } else {
+  //     this.errorMessage = '';
+  //   }
+  // }
 
   onSubmit() {
     if (this.signupForm.valid) {

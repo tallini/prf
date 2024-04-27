@@ -7,11 +7,12 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -20,6 +21,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
   isLoading = false;
+  isOpen = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -33,7 +35,7 @@ export class LoginComponent {
             if (data) {
               // navigation
               this.isLoading = false;
-              this.router.navigateByUrl('/user-management');
+              this.router.navigateByUrl('/home');
             }
           },
           error: (err) => {

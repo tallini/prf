@@ -1,0 +1,16 @@
+@import "../../../../variables";
+
+.club-card {
+  background-color: $secondary-cold-color;
+  color: $secondary-font-color;
+  height: 200px;
+  cursor: pointer;
+
+  .mat-mdc-card-header {
+    background-color: $primary-cold-color;
+    color: $primary-font-color;
+    margin-bottom: 12px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+}

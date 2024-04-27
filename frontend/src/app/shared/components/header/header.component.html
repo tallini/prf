@@ -1,0 +1,17 @@
+<div class="header">
+  <div *ngIf="backButton" class="back-button-container button-container">
+    <button mat-fab>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <div class="title-container">
+    <div class="title">
+      {{title}}
+    </div>
+  </div>
+  <div *ngIf="addNewButton" class="home-button-container button-container" (click)="addNewFunction()">
+    <button mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
