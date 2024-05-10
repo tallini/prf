@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { Club } from '../../models/Club';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-club-card',
@@ -9,5 +11,14 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './club-card.component.scss',
 })
 export class ClubCardComponent {
-  @Input() cardContent: any = '';
+  @Input() cardContent!: Club;
+
+  constructor(private router: Router) {}
+
+  onClick() {
+    console.log('Ez a content: ', this.cardContent);
+    this.router.navigate(['/club'], {
+      queryParams: { clubId: this.cardContent._id },
+    });
+  }
 }

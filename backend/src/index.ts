@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { configureRoutes } from './routes/routes';
+import { userRoutes } from './routes/userRoutes';
 import bodyParser from 'body-parser';
 import passport from 'passport';
 import { configurePassport } from './passport/passport';
@@ -8,6 +8,8 @@ import cookieParser from 'cookie-parser';
 
 import mongoose from 'mongoose';
 import cors from 'cors';
+import { bookClubRoutes } from './routes/bookClubRoutes';
+import { commentRoutes } from './routes/commentRoutes';
 
 const port = 5000;
 const app = express();
@@ -63,7 +65,9 @@ app.use(passport.session());
 configurePassport(passport);
 
 // routes
-app.use('/app', configureRoutes(passport, express.Router()));
+app.use('/user', userRoutes(passport, express.Router()));
+app.use('/book-club', bookClubRoutes(passport, express.Router()));
+app.use('/comment', commentRoutes(passport, express.Router()));
 
 app.listen(port, () => {
   console.log('Server is listening on port: ' + port.toString());

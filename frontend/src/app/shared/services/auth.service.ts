@@ -8,6 +8,16 @@ import { User } from '../models/User';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  private currentUser!: User;
+
+  setCurrentUser(user: any) {
+    this.currentUser = user as User;
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
+  }
+
   // login
   login(username: string, password: string) {
     // HTTP POST request
@@ -19,10 +29,13 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded',
     });
 
-    return this.http.post('http://localhost:5000/app/login', body, {
+    const value = this.http.post('http://localhost:5000/user/login', body, {
       headers: headers,
       withCredentials: true,
     });
+    console.log('ez a value: ', value);
+
+    return value;
   }
 
   register(user: User) {
@@ -38,21 +51,21 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded',
     });
 
-    return this.http.post('http://localhost:5000/app/register', body, {
+    return this.http.post('http://localhost:5000/user/register', body, {
       headers: headers,
     });
   }
 
   logout() {
     return this.http.post(
-      'http://localhost:5000/app/logout',
+      'http://localhost:5000/user/logout',
       {},
       { withCredentials: true, responseType: 'text' }
     );
   }
 
   checkAuth() {
-    return this.http.get<boolean>('http://localhost:5000/app/check-auth', {
+    return this.http.get<boolean>('http://localhost:5000/user/check-auth', {
       withCredentials: true,
     });
   }

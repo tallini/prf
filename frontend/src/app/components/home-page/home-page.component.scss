@@ -15,7 +15,7 @@
       padding: 12px;
 
       &:hover {
-        padding: 8px;
+        filter: brightness(75%);
       }
     }
   }
@@ -28,10 +28,6 @@
 
       .club-card {
         flex: 0 1 calc(50% - 24px);
-
-        &:hover {
-          flex: 0 1 calc(50% - 16px);
-        }
       }
     }
   }
@@ -42,9 +38,6 @@
     .club-card-container {
       .club-card {
         flex: 0 1 calc(33.3% - 24px);
-        &:hover {
-          flex: 0 1 calc(33.3% - 16px);
-        }
       }
     }
   }

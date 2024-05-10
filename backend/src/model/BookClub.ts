@@ -1,23 +1,27 @@
 import mongoose, { Document, Model, Schema, Types } from 'mongoose';
 
 interface IBookClub extends Document {
+  name: String;
   admin: Types.ObjectId;
   members: [Types.ObjectId];
   description: String;
   scedule: String;
   events: [
     {
+      [x: string]: any;
       bookTitle: String;
-      coverUrl: String;
+      author: String;
+      cover: Buffer;
+      date: string;
       description: String;
       meetingLink: String;
-      participants: [Types.ObjectId];
       comments: [Types.ObjectId];
     }
   ];
 }
 
 const BookClubSchema: Schema<IBookClub> = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
   admin: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   members: { type: [Schema.Types.ObjectId], ref: 'User' },
   description: { type: String, required: true },
@@ -26,8 +30,10 @@ const BookClubSchema: Schema<IBookClub> = new mongoose.Schema({
     type: [
       {
         bookTitle: { type: String, required: true },
-        coverUrl: String,
+        author: { type: String, required: true },
+        cover: { data: Buffer, contentType: String },
         description: { type: String, required: true },
+        date: { type: String, required: true },
         meetingLink: String,
         participants: { type: [Schema.Types.ObjectId], ref: 'User' },
         comments: { type: [Schema.Types.ObjectId], ref: 'Comment' },

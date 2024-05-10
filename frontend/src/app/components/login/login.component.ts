@@ -35,6 +35,7 @@ export class LoginComponent {
             if (data) {
               // navigation
               this.isLoading = false;
+              this.authService.setCurrentUser(data);
               this.router.navigateByUrl('/home');
             }
           },

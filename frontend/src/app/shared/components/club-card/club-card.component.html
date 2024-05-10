@@ -1,7 +1,7 @@
-<mat-card class="club-card">
+<mat-card class="club-card" (click)="onClick()">
   <mat-card-header>
-    <mat-card-title>{{cardContent.title}}</mat-card-title>
-    <mat-card-subtitle>{{cardContent.date}}</mat-card-subtitle>
+    <mat-card-title>{{cardContent.name}}</mat-card-title>
+    <mat-card-subtitle>{{cardContent.scedule}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div>{{cardContent.description}}</div>

@@ -1,0 +1,10 @@
+<app-page-template [title]="title" [backButton]="true">
+  <div class="add-modify-container">
+    <form class="add-modify-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <ng-content></ng-content>
+      <div class="buttons">
+        <button mat-flat-button type="submit">Mentés</button>
+      </div>
+    </form>
+  </div>
+</app-page-template>

@@ -1,0 +1,32 @@
+<app-page-template [title]="club? club.name: ''" [backButton]="true" [addNewButton]="true"
+  [addNewRoute]="'/create-event'">
+  <div class="club-page-container">
+    <div class="club-container" *ngIf="club">
+      <mat-card class="description-card">
+        <mat-card-header>
+          <mat-card-title>{{club.scedule}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div>{{club.description}}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="event-container" *ngIf="club">
+      <div class="section-title">Események:</div>
+      <div class="events-container" *ngIf="club">
+        <div class="event-card-container" *ngFor="let event of club.events">
+          <mat-card class="event-card" (click)="onEventClick(event._id)">
+            <mat-card-header>
+              <mat-card-title>{{event.bookTitle}}</mat-card-title>
+              <mat-card-subtitle>{{event.author}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <a>{{event.meetingLink}}</a>
+              <div>{{event.description | slice:0:200}}</div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-page-template>

@@ -1,0 +1,16 @@
+<app-add-modify-template [title]="'Új klub hozzáadása'" [form]="clubForm" (onSubmitEvent)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Klub név</mat-label>
+    <input matInput placeholder="Mrimi műhely" [formControl]="$any(clubForm).get('name')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Alkalmak időpontja</mat-label>
+    <input matInput placeholder="Kedd esténként" [formControl]="$any(clubForm).get('scedule')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Leírás</mat-label>
+    <textarea matInput placeholder="Hetente érdekes krimiket olvasunk..."
+      [formControl]="$any(clubForm).get('description')" required>
+    </textarea>
+  </mat-form-field>
+</app-add-modify-template>

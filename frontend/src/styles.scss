@@ -2,23 +2,21 @@
 
 @import "./variables";
 
+html {
+  height: 100%;
+}
 body {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  width: 100%;
+  height: 100%;
+  background-color: $secondary-cold-color;
 }
 
 app-root {
   width: 100%;
   height: 100%;
-  background-color: $primary-warm-color;
-}
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

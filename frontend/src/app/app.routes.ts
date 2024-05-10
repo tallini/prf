@@ -33,5 +33,37 @@ export const routes: Routes = [
       ),
     canActivate: [authGuard],
   },
+  {
+    path: 'create-club',
+    loadComponent: () =>
+      import('./components/club/create-club/create-club.component').then(
+        (c) => c.CreateClubComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'club',
+    loadComponent: () =>
+      import('./components/club/club-page/club-page.component').then(
+        (c) => c.ClubPageComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'event',
+    loadComponent: () =>
+      import('./components/event/event-page/event-page.component').then(
+        (c) => c.EventPageComponent
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'create-event',
+    loadComponent: () =>
+      import('./components/event/create-event/create-event.component').then(
+        (c) => c.CreateEventComponent
+      ),
+    canActivate: [authGuard],
+  },
   { path: '**', redirectTo: 'login' },
 ];

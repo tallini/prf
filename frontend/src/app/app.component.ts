@@ -7,7 +7,12 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ClubCardComponent } from './shared/components/club-card/club-card.component';
 import { MenuButtonComponent } from './shared/components/menu-button/menu-button.component';
-import { CreateClubComponent } from './components/create-club/create-club.component';
+import { CreateClubComponent } from './components/club/create-club/create-club.component';
+import { PageTemplateComponent } from './shared/components/page-template/page-template.component';
+import { AddModifyTemplateComponent } from './shared/components/add-modify-template/add-modify-template.component';
+import { ClubPageComponent } from './components/club/club-page/club-page.component';
+import { CreateEventComponent } from './components/event/create-event/create-event.component';
+import { EventPageComponent } from './components/event/event-page/event-page.component';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +29,11 @@ import { CreateClubComponent } from './components/create-club/create-club.compon
     ClubCardComponent,
     MenuButtonComponent,
     CreateClubComponent,
+    PageTemplateComponent,
+    AddModifyTemplateComponent,
+    ClubPageComponent,
+    CreateEventComponent,
+    EventPageComponent,
   ],
 })
 export class AppComponent {

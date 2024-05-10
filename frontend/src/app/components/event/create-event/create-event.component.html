@@ -1,0 +1,25 @@
+<app-add-modify-template [title]="'Új alkalom hozzáadása'" [form]="eventForm" (onSubmitEvent)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Könyv cím</mat-label>
+    <input matInput placeholder="Gyilkosság Mezopotámiában" [formControl]="$any(eventForm).get('bookTitle')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Szerző</mat-label>
+    <input matInput placeholder="Agatha Christie" [formControl]="$any(eventForm).get('author')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Alkalom időpontja</mat-label>
+    <input matInput placeholder="Május 23. este 8 óra" [formControl]="$any(eventForm).get('date')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Meeting linkje</mat-label>
+    <input matInput placeholder="http://googlemeet.com/meeting-link"
+      [formControl]="$any(eventForm).get('meetingLink')" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Leírás</mat-label>
+    <textarea matInput placeholder="Ezen az alkalmon egy kiváló..." [formControl]="$any(eventForm).get('description')"
+      required>
+    </textarea>
+  </mat-form-field>
+</app-add-modify-template>

@@ -1,5 +1,5 @@
 <div class="header">
-  <div *ngIf="backButton" class="back-button-container button-container">
+  <div *ngIf="backButton" class="back-button-container button-container" (click)="goBack()">
     <button mat-fab>
       <mat-icon>arrow_back</mat-icon>
     </button>
@@ -9,7 +9,7 @@
       {{title}}
     </div>
   </div>
-  <div *ngIf="addNewButton" class="home-button-container button-container" (click)="addNewFunction()">
+  <div *ngIf="addNewButton" class="home-button-container button-container" (click)="goToRoute()">
     <button mat-fab>
       <mat-icon>add</mat-icon>
     </button>

@@ -13,5 +13,5 @@ export class PageTemplateComponent {
   @Input() title: string = '';
   @Input() backButton: boolean = false;
   @Input() addNewButton: boolean = false;
-  @Input() addNewFunction: () => void = () => {};
+  @Input() addNewRoute: string = '';
 }

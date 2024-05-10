@@ -1,0 +1,71 @@
+@import "../../../../variables";
+
+.club-page-container {
+  padding: 1rem;
+
+  .club-container {
+    .description-card {
+      border-radius: 16px;
+      background-color: $ternary-dark;
+      color: $primary-font-color;
+
+      .mat-mdc-card-header {
+        background-color: $secondary-dark;
+        padding-bottom: 1rem;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+
+      .mat-mdc-card-content {
+        padding-top: 1rem;
+      }
+    }
+  }
+
+  .event-container {
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      line-height: 1;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .events-container {
+      background-color: $primary-cold-color;
+      padding: 1rem;
+
+      flex-direction: column;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      .event-card-container {
+        flex: 1;
+        padding: 12px;
+
+        &:hover {
+          filter: brightness(75%);
+        }
+
+        .event-card {
+          height: 18rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .club-page-container {
+    .event-container {
+      .events-container {
+        flex-direction: row;
+        .event-card-container {
+          flex: 0 1 calc(50% - 24px);
+        }
+      }
+    }
+  }
+}

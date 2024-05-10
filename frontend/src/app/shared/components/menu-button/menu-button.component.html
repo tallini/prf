@@ -2,7 +2,7 @@
   <mat-icon>menu</mat-icon>
 </button>
 <mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="logout()">
     <mat-icon>person</mat-icon>
     <span>Fiók</span>
   </button>
