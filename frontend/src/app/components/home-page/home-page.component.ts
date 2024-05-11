@@ -35,4 +35,8 @@ export class HomePageComponent {
       },
     });
   }
+
+  onAddNew() {
+    this.router.navigate(['/club-form']);
+  }
 }

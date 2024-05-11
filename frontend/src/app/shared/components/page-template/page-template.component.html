@@ -1,6 +1,6 @@
 <div class="page-container">
-  <app-header [title]="title" [addNewButton]="addNewButton" [addNewRoute]="addNewRoute"
-    [backButton]="backButton"></app-header>
+  <app-header [title]="title" [addNewButton]="addNewButton" (onAddNew)="addNew()" [modifyButton]="modifyButton"
+    (onModify)="modify()" [backButton]="backButton"></app-header>
   <ng-content></ng-content>
   <app-menu-button />
 </div>

@@ -8,25 +8,6 @@ import { Club } from '../models/Club';
 export class ClubService {
   constructor(private http: HttpClient) {}
 
-  private currentClub!: Club;
-  private currentEvent!: Event;
-
-  getCurrentClub() {
-    return this.currentClub;
-  }
-
-  setCurrentClub(club: Club) {
-    this.currentClub = club;
-  }
-
-  getCurrentEvent() {
-    return this.currentEvent;
-  }
-
-  setCurrentEvent(event: Event) {
-    this.currentEvent = event;
-  }
-
   headers = new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded',
   });
@@ -72,9 +53,9 @@ export class ClubService {
     });
   }
 
-  delete(id: string) {
+  delete(clubId: string) {
     const body = new URLSearchParams();
-    body.set('clubId', id);
+    body.set('clubId', clubId);
 
     return this.http.delete('http://localhost:5000/book-club/delete', {
       headers: this.headers,
@@ -83,7 +64,7 @@ export class ClubService {
     });
   }
 
-  addMember(userId: string, clubId: string) {
+  addMember(clubId: string, userId: string) {
     const body = new URLSearchParams();
     body.set('userId', userId);
     body.set('clubId', clubId);
@@ -94,7 +75,7 @@ export class ClubService {
     });
   }
 
-  deleteMember(userId: string, clubId: string) {
+  deleteMember(clubId: string, userId: string) {
     const body = new URLSearchParams();
     body.set('clubId', clubId);
     body.set('userId', userId);
@@ -106,9 +87,9 @@ export class ClubService {
     });
   }
 
-  addEvent(event: any) {
+  addEvent(clubId: string, event: any) {
     const body = new URLSearchParams();
-    body.set('clubId', this.currentClub._id);
+    body.set('clubId', clubId);
     body.set('bookTitle', event.bookTitle);
     body.set('author', event.author);
     // body.set('coverUrl', event.coverUrl);
@@ -138,7 +119,7 @@ export class ClubService {
     );
   }
 
-  updateEvent(event: any, clubId: string, eventId: string) {
+  updateEvent(clubId: string, eventId: string, event: any) {
     const body = new URLSearchParams();
 
     body.set('eventId', eventId);

@@ -19,7 +19,7 @@
   <mat-form-field>
     <mat-label>Leírás</mat-label>
     <textarea matInput placeholder="Ezen az alkalmon egy kiváló..." [formControl]="$any(eventForm).get('description')"
-      required>
+      rows="10" required>
     </textarea>
   </mat-form-field>
 </app-add-modify-template>

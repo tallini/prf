@@ -1,0 +1,12 @@
+<app-add-modify-template [title]="'Értékelés hozzáadása'" [form]="commentForm" (onSubmitEvent)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Pont</mat-label>
+    <input matInput placeholder="5" [formControl]="$any(commentForm).get('rate')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Értékelés</mat-label>
+    <textarea matInput placeholder="Azért tetszett különösen ez a történet, mert..."
+      [formControl]="$any(commentForm).get('text')" rows="10" required>
+    </textarea>
+  </mat-form-field>
+</app-add-modify-template>

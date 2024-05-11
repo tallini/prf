@@ -7,11 +7,11 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ClubCardComponent } from './shared/components/club-card/club-card.component';
 import { MenuButtonComponent } from './shared/components/menu-button/menu-button.component';
-import { CreateClubComponent } from './components/club/create-club/create-club.component';
+import { CreateModifyClubComponent } from './components/club/create-modify-club/create-modify-club.component';
 import { PageTemplateComponent } from './shared/components/page-template/page-template.component';
 import { AddModifyTemplateComponent } from './shared/components/add-modify-template/add-modify-template.component';
 import { ClubPageComponent } from './components/club/club-page/club-page.component';
-import { CreateEventComponent } from './components/event/create-event/create-event.component';
+import { CreateModifyEventComponent } from './components/event/create-modify-event/create-modify-event.component';
 import { EventPageComponent } from './components/event/event-page/event-page.component';
 
 @Component({
@@ -28,11 +28,11 @@ import { EventPageComponent } from './components/event/event-page/event-page.com
     HeaderComponent,
     ClubCardComponent,
     MenuButtonComponent,
-    CreateClubComponent,
+    CreateModifyClubComponent,
     PageTemplateComponent,
     AddModifyTemplateComponent,
     ClubPageComponent,
-    CreateEventComponent,
+    CreateModifyEventComponent,
     EventPageComponent,
   ],
 })

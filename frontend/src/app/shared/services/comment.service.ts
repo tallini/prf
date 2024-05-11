@@ -21,9 +21,17 @@ export class CommentService {
     );
   }
 
-  create(comment: Comment, clubId: string, eventId: string) {
+  getOne(commentId: string) {
+    return this.http.get<Comment>(
+      `http://localhost:5000/comment/get-one?commentId=${commentId}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
+
+  create(clubId: string, eventId: string, comment: Comment) {
     const body = new URLSearchParams();
-    body.set('writer', comment.writer);
     body.set('rate', comment.rate);
     body.set('text', comment.text);
     body.set('clubId', clubId);
@@ -37,7 +45,8 @@ export class CommentService {
 
   update(comment: Comment) {
     const body = new URLSearchParams();
-    body.set('writer', comment.writer);
+    console.log(comment);
+
     body.set('rate', comment.rate);
     body.set('text', comment.text);
     body.set('commentId', comment._id);
@@ -48,9 +57,9 @@ export class CommentService {
     });
   }
 
-  delete(id: string) {
+  delete(commentId: string) {
     const body = new URLSearchParams();
-    body.set('commentId', id);
+    body.set('commentId', commentId);
 
     return this.http.delete('http://localhost:5000/comment/delete', {
       headers: this.headers,

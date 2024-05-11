@@ -1,5 +1,5 @@
 <app-page-template [title]="event? club.name+' eseménye' : ''" [backButton]="true" [addNewButton]="true"
-  [addNewRoute]="'/'">
+  (onAddNew)="onAddNew()" [modifyButton]="true" (onModify)="onModify()">
   <div class="event-page-container">
     <div class="event-container" *ngIf="event">
       <mat-card class="description-card">
@@ -15,13 +15,12 @@
       </mat-card>
     </div>
     <div class="comments-container" *ngIf="club">
-      <mat-card class="comment-card" *ngFor="let comments of event.comments">
+      <mat-card class="comment-card" *ngFor="let comment of comments">
         <mat-card-header>
-          <mat-card-title>{{event.bookTitle}}</mat-card-title>
+          <mat-card-title>{{comment.rate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <a>{{event.meetingLink}}</a>
-          <div>{{club.description}}</div>
+          <div>{{comment.text}}</div>
         </mat-card-content>
       </mat-card>
     </div>

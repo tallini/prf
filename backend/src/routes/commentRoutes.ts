@@ -18,6 +18,22 @@ export const commentRoutes = (
     }
   });
 
+  router.get('/get-one', async (req: Request, res: Response) => {
+    if (req.isAuthenticated()) {
+      const commentId = req.query.commentId;
+
+      try {
+        const data = await Comment.findById(commentId);
+        res.status(200).send(data);
+      } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal server error.');
+      }
+    } else {
+      res.status(500).send('User is not logged in.');
+    }
+  });
+
   router.get('/get', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
       try {

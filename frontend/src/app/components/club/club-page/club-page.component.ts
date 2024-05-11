@@ -36,7 +36,6 @@ export class ClubPageComponent {
       this.clubService.get(this.clubId).subscribe({
         next: (data) => {
           this.club = data;
-          this.clubService.setCurrentClub(data);
           console.log(data);
         },
         error: (err) => {
@@ -49,6 +48,20 @@ export class ClubPageComponent {
   onEventClick(eventId: string) {
     this.router.navigate(['/event'], {
       queryParams: { clubId: this.clubId, eventId: eventId },
+    });
+  }
+
+  public onAddNew() {
+    this.router.navigate(['/event-form'], {
+      queryParams: { clubId: this.clubId },
+    });
+  }
+
+  public onModify() {
+    console.log('modify!');
+
+    this.router.navigate(['/club-form'], {
+      queryParams: { clubId: this.clubId },
     });
   }
 }

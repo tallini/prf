@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuButtonComponent } from '../menu-button/menu-button.component';
 import { HeaderComponent } from '../header/header.component';
 
@@ -13,5 +13,14 @@ export class PageTemplateComponent {
   @Input() title: string = '';
   @Input() backButton: boolean = false;
   @Input() addNewButton: boolean = false;
-  @Input() addNewRoute: string = '';
+  @Input() modifyButton: boolean = false;
+  @Output() onAddNew: EventEmitter<any> = new EventEmitter();
+  @Output() onModify: EventEmitter<any> = new EventEmitter();
+
+  public addNew() {
+    this.onAddNew.emit();
+  }
+  public modify() {
+    this.onModify.emit();
+  }
 }

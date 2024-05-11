@@ -10,7 +10,7 @@
   <mat-form-field>
     <mat-label>Leírás</mat-label>
     <textarea matInput placeholder="Hetente érdekes krimiket olvasunk..."
-      [formControl]="$any(clubForm).get('description')" required>
+      [formControl]="$any(clubForm).get('description')" rows="10" required>
     </textarea>
   </mat-form-field>
 </app-add-modify-template>

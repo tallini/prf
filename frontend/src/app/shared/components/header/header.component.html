@@ -9,9 +9,14 @@
       {{title}}
     </div>
   </div>
-  <div *ngIf="addNewButton" class="home-button-container button-container" (click)="goToRoute()">
+  <div *ngIf="addNewButton" class="home-button-container button-container" (click)="addNew()">
     <button mat-fab>
       <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="modifyButton" class="home-button-container button-container" (click)="modify()">
+    <button mat-fab>
+      <mat-icon>edit</mat-icon>
     </button>
   </div>
 </div>

@@ -34,11 +34,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'create-club',
+    path: 'club-form',
     loadComponent: () =>
-      import('./components/club/create-club/create-club.component').then(
-        (c) => c.CreateClubComponent
-      ),
+      import(
+        './components/club/create-modify-club/create-modify-club.component'
+      ).then((c) => c.CreateModifyClubComponent),
     canActivate: [authGuard],
   },
   {
@@ -58,11 +58,19 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'create-event',
+    path: 'event-form',
     loadComponent: () =>
-      import('./components/event/create-event/create-event.component').then(
-        (c) => c.CreateEventComponent
-      ),
+      import(
+        './components/event/create-modify-event/create-modify-event.component'
+      ).then((c) => c.CreateModifyEventComponent),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'comment-form',
+    loadComponent: () =>
+      import(
+        './components/event/create-modify-comment/create-modify-comment.component'
+      ).then((c) => c.CreateModifyCommentComponent),
     canActivate: [authGuard],
   },
   { path: '**', redirectTo: 'login' },
