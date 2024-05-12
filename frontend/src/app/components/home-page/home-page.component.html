@@ -1,4 +1,4 @@
-<app-page-template [title]="'Kezdőlap'" [addNewButton]="true" (onAddNew)="onAddNew()">
+<app-page-template [title]="'Kezdőlap'" [addNewButton]="isAdmin()" (onAddNew)="onAddNew()">
   <div class="home-page-container">
     <mat-tab-group [color]="'accent'">
       <mat-tab label="Klubjaim" class="valami">

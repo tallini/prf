@@ -10,6 +10,7 @@ import { Event } from '../../../shared/models/Event';
 import { Comment } from '../../../shared/models/Comment';
 import { CommentService } from '../../../shared/services/comment.service';
 import { StarRatingComponent } from '../../../shared/components/star-rating/star-rating.component';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-club-page',
@@ -35,6 +36,7 @@ export class EventPageComponent {
     private route: ActivatedRoute,
     protected clubService: ClubService,
     protected commentService: CommentService,
+    protected authService: AuthService,
     private router: Router
   ) {}
 
@@ -82,5 +84,9 @@ export class EventPageComponent {
     this.router.navigate(['/event-form'], {
       queryParams: { clubId: this.clubId, eventId: this.eventId },
     });
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 }

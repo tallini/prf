@@ -6,6 +6,7 @@ import { Club } from '../../../shared/models/Club';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { ClubCardComponent } from '../../../shared/components/club-card/club-card.component';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-club-page',
@@ -26,6 +27,7 @@ export class ClubPageComponent {
   constructor(
     private route: ActivatedRoute,
     private clubService: ClubService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -63,5 +65,9 @@ export class ClubPageComponent {
     this.router.navigate(['/club-form'], {
       queryParams: { clubId: this.clubId },
     });
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 }

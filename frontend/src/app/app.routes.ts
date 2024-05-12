@@ -73,5 +73,13 @@ export const routes: Routes = [
       ).then((c) => c.CreateModifyCommentComponent),
     canActivate: [authGuard],
   },
+  {
+    path: 'user-page',
+    loadComponent: () =>
+      import('./components/user-page/user-page.component').then(
+        (c) => c.UserPageComponent
+      ),
+    canActivate: [authGuard],
+  },
   { path: '**', redirectTo: 'login' },
 ];

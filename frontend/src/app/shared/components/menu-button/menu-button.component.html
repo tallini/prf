@@ -2,11 +2,15 @@
   <mat-icon>menu</mat-icon>
 </button>
 <mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item (click)="logout()">
+  <button mat-menu-item (click)="userPage()">
     <mat-icon>person</mat-icon>
     <span>Fiók</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Kilépés</span>
+  </button>
+  <button mat-menu-item (click)="homePage()">
     <mat-icon>home</mat-icon>
     <span>Főoldal</span>
   </button>

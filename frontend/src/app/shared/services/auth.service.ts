@@ -14,8 +14,12 @@ export class AuthService {
     this.currentUser = user as User;
   }
 
-  getCurrentUser() {
+  getCurrentUser(): User {
     return this.currentUser;
+  }
+
+  isAdmin(): boolean {
+    return this.currentUser?.role === 'ADMIN';
   }
 
   // login

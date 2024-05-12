@@ -46,8 +46,6 @@ export class CreateModifyClubComponent {
     });
 
     this.route.queryParams.subscribe((params) => {
-      console.log('yay', params);
-
       if (params['clubId']) {
         this.isModifyMode = true;
         this.clubId = params['clubId'];
@@ -69,8 +67,6 @@ export class CreateModifyClubComponent {
       }
     });
   }
-
-  //TODO: figyelni arra, hogy nem módosítjuk az objektumot ahigy leküldjük!
 
   onSubmit() {
     if (this.clubForm.valid) {

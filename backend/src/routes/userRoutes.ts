@@ -24,6 +24,8 @@ export const userRoutes = (
               } else {
                 try {
                   const userData = await User.findById(user);
+                  console.log(userData?.role);
+
                   res.status(200).send({
                     _id: userData?._id,
                     username: userData?.username,

@@ -1,0 +1,21 @@
+<app-add-modify-template [title]="'Profil módosítása'" [form]="userForm" (onSubmitEvent)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Email cím</mat-label>
+    <input matInput [formControl]="$any(userForm).get('email')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Felhasználónév</mat-label>
+    <input matInput [formControl]="$any(userForm).get('username')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Keresztnév</mat-label>
+    <input matInput [formControl]="$any(userForm).get('firstName')" required />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Vezetéknév</mat-label>
+    <input matInput [formControl]="$any(userForm).get('lastName')" required />
+  </mat-form-field>
+  <div class="buttons">
+    <button mat-flat-button (click)="deleteUser()">Fiók törlése</button>
+  </div>
+</app-add-modify-template>

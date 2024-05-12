@@ -1,7 +1,8 @@
 <app-add-modify-template [title]="'Értékelés hozzáadása'" [form]="commentForm" (onSubmitEvent)="onSubmit()">
   <mat-form-field>
     <mat-label>Pont</mat-label>
-    <input matInput placeholder="5" [formControl]="$any(commentForm).get('rate')" required />
+    <input matInput placeholder="5" type="number" min="1" max="10" [formControl]="$any(commentForm).get('rate')"
+      required />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Értékelés</mat-label>

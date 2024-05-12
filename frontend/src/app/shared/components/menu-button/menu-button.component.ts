@@ -25,4 +25,11 @@ export class MenuButtonComponent {
       },
     });
   }
+
+  userPage() {
+    this.router.navigateByUrl('/user-page');
+  }
+  homePage() {
+    this.router.navigateByUrl('/home');
+  }
 }

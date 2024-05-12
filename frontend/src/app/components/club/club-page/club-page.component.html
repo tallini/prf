@@ -1,5 +1,5 @@
-<app-page-template [title]="club? club.name: ''" [backButton]="true" [addNewButton]="true" (onAddNew)="onAddNew()"
-  [modifyButton]="true" (onModify)="onModify()">
+<app-page-template [title]="club? club.name: ''" [backButton]="true" [addNewButton]="isAdmin()" (onAddNew)="onAddNew()"
+  [modifyButton]="isAdmin()" (onModify)="onModify()">
   <div class="club-page-container">
     <div class="club-container" *ngIf="club">
       <mat-card class="description-card">

@@ -70,18 +70,6 @@ export class SignupComponent implements OnInit {
     };
   }
 
-  // errorMessage = '';
-
-  // updateErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     this.errorMessage = 'You must enter a value';
-  //   } else if (this.email.hasError('email')) {
-  //     this.errorMessage = 'Not a valid email';
-  //   } else {
-  //     this.errorMessage = '';
-  //   }
-  // }
-
   onSubmit() {
     if (this.signupForm.valid) {
       console.log('Form data:', this.signupForm.value);

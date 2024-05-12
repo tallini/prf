@@ -6,6 +6,7 @@ import { PageTemplateComponent } from '../../shared/components/page-template/pag
 import { ClubService } from '../../shared/services/club.service';
 import { Club } from '../../shared/models/Club';
 import { Router } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -22,7 +23,11 @@ import { Router } from '@angular/router';
 export class HomePageComponent {
   clubs!: Club[];
 
-  constructor(private clubService: ClubService, private router: Router) {}
+  constructor(
+    private clubService: ClubService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.clubService.getAll().subscribe({
@@ -38,5 +43,9 @@ export class HomePageComponent {
 
   onAddNew() {
     this.router.navigate(['/club-form']);
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 }

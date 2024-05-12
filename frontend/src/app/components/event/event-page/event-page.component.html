@@ -1,5 +1,5 @@
 <app-page-template [title]="event? club.name+' eseménye' : ''" [backButton]="true" [addNewButton]="true"
-  (onAddNew)="onAddNew()" [modifyButton]="true" (onModify)="onModify()">
+  (onAddNew)="onAddNew()" [modifyButton]="isAdmin()" (onModify)="onModify()">
   <div class="event-page-container">
     <div class="event-container" *ngIf="event">
       <mat-card class="description-card">

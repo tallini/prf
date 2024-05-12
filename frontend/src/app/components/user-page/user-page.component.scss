@@ -1,0 +1,11 @@
+@import "./../../../variables";
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  button {
+    background-color: $warning;
+    color: $secondary-font-color;
+  }
+}

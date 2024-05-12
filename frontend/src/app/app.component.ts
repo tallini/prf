@@ -14,6 +14,7 @@ import { ClubPageComponent } from './components/club/club-page/club-page.compone
 import { CreateModifyEventComponent } from './components/event/create-modify-event/create-modify-event.component';
 import { EventPageComponent } from './components/event/event-page/event-page.component';
 import { StarRatingComponent } from './shared/components/star-rating/star-rating.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,7 @@ import { StarRatingComponent } from './shared/components/star-rating/star-rating
     CreateModifyEventComponent,
     EventPageComponent,
     StarRatingComponent,
+    UserPageComponent,
   ],
 })
 export class AppComponent {
