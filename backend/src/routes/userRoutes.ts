@@ -120,7 +120,15 @@ export const userRoutes = (
   router.delete('/delete', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
       try {
+        const admin = req.user as string;
         const id = req.body.id;
+
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin || admin !== id) {
+          res.status(403).send('Forbidden');
+          return;
+        }
+
         const data = await User.deleteOne({ _id: id });
         res.status(200).send(data);
       } catch (error) {
@@ -134,9 +142,15 @@ export const userRoutes = (
 
   router.get('/get-all', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
-      console.log(req.user, typeof req.user);
-
       try {
+        const admin = req.user as string;
+
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
+
         const data = await User.find();
         res.status(200).send(
           data.map((user) => ({

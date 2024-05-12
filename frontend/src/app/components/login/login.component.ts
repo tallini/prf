@@ -8,11 +8,12 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatProgressSpinnerModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -41,6 +42,7 @@ export class LoginComponent {
           },
           error: (err) => {
             this.isLoading = false;
+            this.errorMessage = 'Sikertelen bejelentkezés';
           },
         });
       } else {

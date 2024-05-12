@@ -1,7 +1,9 @@
 import { Request, Response, Router } from 'express';
 import { PassportStatic } from 'passport';
 import { BookClub } from '../model/BookClub';
-import { Types } from 'mongoose';
+import { ObjectId, Types } from 'mongoose';
+import { User } from '../model/User';
+import Roles from '../model/Roles';
 
 export const bookClubRoutes = (
   passport: PassportStatic,
@@ -33,10 +35,22 @@ export const bookClubRoutes = (
   router.get('/get', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
       try {
+        const user = req.user as string;
         const clubId = req.query.clubId;
         const returnedData = await BookClub.findById(clubId);
         if (returnedData) {
-          res.status(200).send(returnedData);
+          if (
+            returnedData.members.includes(user as unknown as Types.ObjectId)
+          ) {
+            res.status(200).send(returnedData);
+          } else {
+            const userData = await User.findById(user);
+            if (userData?.role == Roles.admin) {
+              res.status(200).send(returnedData);
+            } else {
+              res.status(403).send('Forbidden');
+            }
+          }
         } else {
           res.status(404).send('No club with id: ' + clubId);
         }
@@ -49,14 +63,9 @@ export const bookClubRoutes = (
   });
 
   router.post('/create', async (req: Request, res: Response) => {
-    console.log(req.isAuthenticated());
-
     if (req.isAuthenticated()) {
       try {
-        let admin;
-        if (typeof req.user === 'string') {
-          admin = req.user;
-        }
+        const admin = req.user as string;
         const description = req.body.description;
         const scedule = req.body.scedule;
         const name = req.body.name;
@@ -68,7 +77,11 @@ export const bookClubRoutes = (
           admin: new Types.ObjectId(admin),
         });
 
-        console.log(club);
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
 
         const returnedData = await club.save();
         res.status(200).send(returnedData);
@@ -82,12 +95,19 @@ export const bookClubRoutes = (
 
   router.put('/update', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
+      const admin = req.user as string;
+
       const name = req.body.name;
       const description = req.body.description;
       const scedule = req.body.scedule;
       const clubId = req.query.clubId;
 
       try {
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
         const update = {
           name: name,
           description: description,
@@ -110,6 +130,13 @@ export const bookClubRoutes = (
     if (req.isAuthenticated()) {
       try {
         const id = req.body.clubId;
+        const admin = req.user as string;
+
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
 
         const data = await BookClub.findByIdAndDelete(id);
         res.status(200).send(data);
@@ -127,6 +154,16 @@ export const bookClubRoutes = (
       const clubId = req.body.clubId;
       const userId = req.body.userId;
       try {
+        const user = req.user as string;
+
+        if (user !== userId) {
+          const userData = await User.findById(user);
+          if (userData?.role !== Roles.admin) {
+            res.status(403).send('Forbidden');
+            return;
+          }
+        }
+
         const returnedData = await BookClub.findByIdAndUpdate(
           clubId,
           {
@@ -152,6 +189,15 @@ export const bookClubRoutes = (
       const clubId = req.body.clubId;
       const userId = req.body.userId;
       try {
+        const user = req.user as string;
+        if (user !== userId) {
+          const userData = await User.findById(user);
+          if (userData?.role !== Roles.admin) {
+            res.status(403).send('Forbidden');
+            return;
+          }
+        }
+
         if (typeof userId !== 'string') {
           throw new TypeError();
         }
@@ -189,6 +235,14 @@ export const bookClubRoutes = (
       const newEventId: Types.ObjectId = new Types.ObjectId();
 
       try {
+        const admin = req.user as string;
+
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
+
         await BookClub.findByIdAndUpdate(
           clubId,
           {
@@ -224,6 +278,14 @@ export const bookClubRoutes = (
       const clubId = req.body.clubId;
       const eventId = req.body.eventId;
       try {
+        const admin = req.user as string;
+
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
+
         const returnedData = await BookClub.findByIdAndUpdate(
           clubId,
           {
@@ -258,6 +320,14 @@ export const bookClubRoutes = (
       const date = req.body.date;
 
       try {
+        const admin = req.user as string;
+
+        const userData = await User.findById(admin);
+        if (userData?.role !== Roles.admin) {
+          res.status(403).send('Forbidden');
+          return;
+        }
+
         const returnedData = await BookClub.findByIdAndUpdate(
           clubId,
           {

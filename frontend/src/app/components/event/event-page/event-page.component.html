@@ -14,10 +14,12 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="comments-container" *ngIf="club">
+    <div class="comments-container" *ngIf="comments">
+      <div class="comments-title">Értékelések:</div>
       <mat-card class="comment-card" *ngFor="let comment of comments">
         <mat-card-header>
           <mat-card-title>{{comment.rate}}</mat-card-title>
+          <app-star-rating [rating]="parseFloat(comment.rate)"></app-star-rating>
         </mat-card-header>
         <mat-card-content>
           <div>{{comment.text}}</div>

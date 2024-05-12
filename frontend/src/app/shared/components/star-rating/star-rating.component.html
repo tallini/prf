@@ -1,0 +1,5 @@
+<div class="star-rating">
+  <mat-icon *ngFor="let star of stars">star</mat-icon>
+  <mat-icon *ngIf="rating % 1 !== 0">star_half</mat-icon>
+  <mat-icon *ngFor="let star of emptyStars">star_border</mat-icon>
+</div>

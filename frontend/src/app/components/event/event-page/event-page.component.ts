@@ -9,6 +9,7 @@ import { ClubCardComponent } from '../../../shared/components/club-card/club-car
 import { Event } from '../../../shared/models/Event';
 import { Comment } from '../../../shared/models/Comment';
 import { CommentService } from '../../../shared/services/comment.service';
+import { StarRatingComponent } from '../../../shared/components/star-rating/star-rating.component';
 
 @Component({
   selector: 'app-club-page',
@@ -18,6 +19,7 @@ import { CommentService } from '../../../shared/services/comment.service';
     MatCardModule,
     CommonModule,
     ClubCardComponent,
+    StarRatingComponent,
   ],
   templateUrl: './event-page.component.html',
   styleUrl: './event-page.component.scss',
@@ -64,6 +66,10 @@ export class EventPageComponent {
         },
       });
     });
+  }
+
+  parseFloat(string: string): number {
+    return parseFloat(string);
   }
 
   onAddNew() {

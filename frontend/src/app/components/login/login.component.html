@@ -18,8 +18,15 @@
         <form class="login-form" (ngSubmit)="login()">
             <input [(ngModel)]="username" name="username" type="text" placeholder="Felhasználónév" required />
             <input [(ngModel)]="password" name="password" type="password" placeholder="Jelszó" required />
+            <div *ngIf="errorMessage" class="failed-login">
+                <p>{{errorMessage}}</p>
+            </div>
             <button type="submit">Bejelentkezés</button>
             <button type="button" (click)="navigate('/signup')">Regisztráció</button>
+
+            <div class="overlay" *ngIf="isLoading">
+                <mat-spinner></mat-spinner>
+            </div>
         </form>
     </div>
 </div>

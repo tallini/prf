@@ -3,20 +3,22 @@ import { PassportStatic } from 'passport';
 import { BookClub } from '../model/BookClub';
 import { Types } from 'mongoose';
 import { Comment } from '../model/Comment';
+import { User } from '../model/User';
+import Roles from '../model/Roles';
 
 export const commentRoutes = (
   passport: PassportStatic,
   router: Router
 ): Router => {
-  router.get('/get-all', async (req: Request, res: Response) => {
-    try {
-      const data = await Comment.find();
-      res.status(200).send(data);
-    } catch (error) {
-      console.log(error);
-      res.status(500).send('Internal server error.');
-    }
-  });
+  // router.get('/get-all', async (req: Request, res: Response) => {
+  //   try {
+  //     const data = await Comment.find();
+  //     res.status(200).send(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //     res.status(500).send('Internal server error.');
+  //   }
+  // });
 
   router.get('/get-one', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
@@ -48,9 +50,18 @@ export const commentRoutes = (
 
         const event = data?.events.find((event) => event?.id === eventId);
 
-        const comments = event?.comments;
+        const comments = event?.comments as [any];
 
-        res.status(200).send(comments);
+        res.status(200).send(
+          comments?.map((comment) => ({
+            _id: comment._id,
+            rate: comment.rate,
+            text: comment.text,
+            createdAt: comment.createdAt,
+            updatedAt: comment.updatedAt,
+            writer: 'Valaki',
+          }))
+        );
       } catch (error) {
         console.log(error);
         res.status(500).send('Internal server error.');
@@ -96,16 +107,25 @@ export const commentRoutes = (
   router.put('/update', async (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
       try {
+        const user = req.user;
         const commentId = req.body.commentId;
-        const writer = req.body.writerId;
         const rate = req.body.rate;
         const text = req.body.text;
+
+        const commentData = await Comment.findById(commentId);
+
+        if (commentData?.writer !== user) {
+          const userData = await User.findById(user);
+          if (userData?.role !== Roles.admin) {
+            res.status(403).send('Forbidden');
+            return;
+          }
+        }
 
         const returnedData = await Comment.findByIdAndUpdate(
           commentId,
           {
             $set: {
-              writer: writer,
               rate: rate,
               text: text,
             },
@@ -126,6 +146,17 @@ export const commentRoutes = (
     if (req.isAuthenticated()) {
       try {
         const id = req.body.commentId;
+        const user = req.user;
+
+        const commentData = await Comment.findById(id);
+
+        if (commentData?.writer !== user) {
+          const userData = await User.findById(user);
+          if (userData?.role !== Roles.admin) {
+            res.status(403).send('Forbidden');
+            return;
+          }
+        }
 
         const data = await Comment.deleteOne({ _id: id });
         res.status(200).send(data);

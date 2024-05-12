@@ -77,6 +77,12 @@ $book-color-1: #56765f;
         }
       }
 
+      .failed-login {
+        display: flex;
+        justify-content: center;
+        color: #b41b00;
+      }
+
       button {
         background: none;
         border: none;
