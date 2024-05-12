@@ -46,6 +46,7 @@ export class ClubService {
     body.set('description', club.description);
     body.set('scedule', club.scedule);
     body.set('clubId', club._id);
+    console.log('update');
 
     return this.http.put('http://localhost:5000/book-club/update', body, {
       headers: this.headers,

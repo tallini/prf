@@ -70,7 +70,6 @@ export class CreateModifyClubComponent {
 
   onSubmit() {
     if (this.clubForm.valid) {
-      console.log('Form data:', this.clubForm.value);
       if (this.isModifyMode) {
         this.clubService.update(this.clubForm.value);
       } else {
